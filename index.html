@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Free Cell</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div id="beginPage" class="beginPage">
+            <img src="img/logo.svg" alt="" class="logo">
+            <button id="start" class="btn">START</button>
+        </div>
+        <div id="loginPage" class="loginPage" style="display: none">
+            <div class="textBox">
+                <div class="text">「你各位啊！還不快點跑起來！」 <br>毫不講理的咆哮在清晨中破響，<br>天啊！紅心女王又發怒啦～<br>可憐的白兔先生只好四處奔走，<br>通知那些還在傻傻塗玫瑰的菜鳥們。<br>不想被女王砍掉頭顱的話，<br>快點幫忙撲克牌士兵們集合起來吧！</div>
+            </div>
+            <div class="logobar">
+                <div class="bunny">
+                    <img src="img/img_loading-icon.svg" alt="">
+                </div>
+                <div class="bar">
+                    <div class="login"></div>
+                </div>
+            </div>
+            <div class="load">
+                <div class="div"></div>
+                <div class="loadText">Loading</div>
+                <div class="dot first">.</div>
+                <div class="dot second">.</div>
+                <div class="dot third">.</div>
+            </div>
+        </div>
+        <div id="mainPage" class="mainPage" style="display: none">
+            <div class="topsection">
+                <div id="clock" class="clock">00:00</div>
+                <div id="lefttCardDeck" class="leftCardDeck"></div>
+                <div id="rightCardDeck" class="rightCardDeck"></div>
+            </div>
+            <div id="medsection" class="medsection"></div>
+            <div class="btnBar">
+                <div id="pause" class="navbtn">暫停</div>
+                <div id="redo" class="navbtn">回上一步</div>
+                <div id="restart" class="navbtn">重新開始</div>
+                <div id="newgame" class="navbtn">開新一局</div>
+            </div>
+            <div id="hint" class="hint">集合時間只有15分鐘！</div>
+            <div id="gameOver" class="popupPage">
+                <div class="content">
+                    <img class="overImg" src="img/img-gameover-tittle.svg" alt="">     
+                    <div class="text">看來你的一番努力<br>終究是無法<br>讓他們喝到下午茶囉～</div>
+                    <div id="restart2" class="btn btnLeft">重新開始</div>
+                    <div id='newgame2' class="btn btnRight">開新一局</div>
+                    <div id="overClose" class="btn-close">或直接關閉視窗 X 結束遊戲</div>
+                </div>
+            </div>
+            <div id="winGame" class="popupPage">
+                <div class="content win">
+                    <img class="winImg" src="img/img-win-tittle.svg" alt="">     
+                    <div class="text">你完成一件偉大的成就！<br>看來今天又是不思議之國<br>美好的一天呢～</div>
+                    <div id="restart3" class="btn btnLeft">重新開始</div>
+                    <div id='newgame3' class="btn btnRight">開新一局</div>
+                    <div id='winClose' class="btn-close">或直接關閉視窗 X 結束遊戲</div>
+                </div>
+            </div>
+            <div id="gamePause" class="pausePage"></div>
+        </div>
+    </div>
+    <!-- 進場動畫和一些微互動就先不做了...用原生javascript寫新接龍規則超累ＱＱ -->
+    <script src="function.js"></script>
+</body>
+</html>

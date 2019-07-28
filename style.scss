@@ -1,0 +1,425 @@
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,500|Roboto:700,700i&display=swap&subset=chinese-traditional');
+@import url('Noto_Sans_TC/NotoSansTC-Medium.otf');
+@import url('Noto_Sans_TC/NotoSansTC-Light.otf');
+
+
+$bg-color:#27123E;
+$btn-color:#15B0BF;
+$login-color:#EF6278;
+
+
+@mixin btn($size,$width,$height) {
+    font-family: "Noto+Sans+TC","Noto_Sans_TC","NotoSansTC","Roboto";
+    font-size: $size;
+    background-color: $btn-color;
+    color: $bg-color;
+    width: $width;
+    height: $height;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    line-height: $height;
+    border: none;
+}
+@mixin btnHover {
+    background-color: $bg-color;
+    color: $btn-color;
+}
+@mixin card($top) {
+    position: absolute;
+    top:$top+px;
+    height: 150px;
+    width: 100px;
+    // padding-top: 40px;
+}
+
+
+
+
+// *****************************************************
+*{
+    box-sizing: border-box;
+}
+html,body{
+    margin: 0;
+    padding: 0;
+}
+.wrapper{
+    position: relative;
+    width: 1280px;
+    height: 800px;
+    margin: 0 auto;
+}
+
+// ******************start*****************
+.beginPage{
+    position: absolute;
+    background-color: $bg-color;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+    z-index: 5;
+    .logo{
+        margin: 0 auto;
+        display: block;
+        margin-top: 160px;
+    }
+    .btn{
+        @include btn(36px,360px,60px);
+        margin-top: 67px;
+        border-radius: 10px;
+        font-weight: 700;
+        font-style: italic;
+        &:hover{
+            background-color: $bg-color;
+            border: 3px solid $btn-color;
+            color: $btn-color;
+            line-height: 54px;
+        }
+    }
+}
+
+// ******************loading*****************
+.loginPage{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: $bg-color;
+    overflow: hidden;
+    text-align: center;
+    z-index: 10;
+    .textBox{
+        display: block;
+        margin: 0 auto;
+        width: 500px;
+        height: 400px;
+        border-radius: 12px;
+        border: 3px solid $btn-color;
+        margin-top: 130px;
+        text-align: center;
+    }
+    .text{
+        font-size: 24px;
+        display: inline-block;
+        color: $btn-color;
+        padding:30px 0;
+        font-family: 'Noto Sans TC';
+        font-weight: 400;
+        line-height: 48px;
+    }
+}
+.logobar{
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    height: 107px;
+    width: 1000px;
+    margin-top: 40px;
+    .bar{
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 810px;
+        height: 20px;
+        border-radius: 10px;
+        background-color: #fff;
+        border: 5px solid #fff;
+        text-align: left;
+        overflow: hidden;
+        .login{
+            width: 0%;
+            height: 100%;
+            background-color: $login-color;
+            animation: loginBar 3s linear forwards;
+        }
+    }
+    .bunny{
+        position: absolute;
+        top: 0;
+        left: 50px;
+        animation: login 3s linear forwards;
+    }
+}
+.load{
+    text-align: center;
+    margin-top: 26px;
+}
+.div{
+    display: inline-block;
+    width: 40px;
+}
+.loadText{
+    display: inline-block;
+    color: #fff;
+    font-size: 36px;
+    font-family: 'Roboto';
+    font-style: italic;
+}
+.dot{
+    display: inline-block;
+    color: #fff;
+    visibility: hidden;
+    font-size: 36px;
+    font-family: 'Roboto';
+    font-style: italic;
+    &.first{
+        animation: load1 1.5s linear  infinite;
+    }
+    &.second{
+        animation: load2 1.5s  linear  infinite;
+    }
+    &.third{
+        animation: load3 1.5s  linear  infinite;
+    }
+}
+@keyframes loginBar{
+    0%{width: 0%;}
+    // 40%{width: 50%;}
+    // 45%{width: 50%;}
+    // 80%{width: 100%;}
+    100%{width: 100%;}
+}
+@keyframes login{
+    0%{left: 50px;}
+    // 40%{left: 450px;}
+    // 45%{left: 450px;}
+    // 80%{left: 850px;}
+    100%{left: 850px;}
+}
+@keyframes load1{
+    0%{visibility: hidden;opacity: 0;}
+    30%{visibility:hidden;opacity: 1;}
+    50%{visibility: visible;opacity: 1;}
+    100%{visibility: visible;opacity: 1;}
+}
+@keyframes load2{
+    0%{visibility: hidden;opacity: 0;}
+    50%{visibility:hidden;opacity: 1;}
+    70%{visibility: visible;opacity: 1;}
+    100%{visibility: visible;opacity: 1;}
+}
+@keyframes load3{
+    0%{visibility: hidden;opacity: 0;}
+    70%{visibility:hidden;opacity: 1;}
+    90%{visibility:visible;opacity: 1;}
+    100%{visibility: visible;opacity: 1;}
+}
+
+// ******************main*****************
+.mainPage{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+    background: url(img/bg-main-header.svg),
+                linear-gradient(to bottom, #89D7D1,#4391AB);
+    background-repeat: no-repeat,no-repeat;
+    background-position: top,bottom;
+    background-size:auto,auto;
+}
+
+//*********btn*********
+.btnBar{
+    background-color: #2A6882;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 0 200px;
+    .navbtn{
+        @include btn(24px,160px,40px);
+        border-radius: 4.5px;
+        font-weight: 400;
+        transition: all .2s;
+        &:hover{
+            @include btnHover;
+        }
+    }
+}
+
+//*********topsection*********
+.topsection{
+    position: relative;
+    width: 100%;
+    height: 200px;
+    .leftCardDeck,.rightCardDeck{
+        display: flex;
+        position: absolute;
+        bottom: 10px;
+        width: 460px;
+        height: 160px;
+        // border: 1px solid #fff;
+        justify-content: space-between;
+        align-items: flex-end;
+        .deck{
+            width: 100px;
+            height: 150px;
+            position: relative;
+        }
+        .cardbox0{
+            top: 0;
+        }
+    }
+}
+.clock{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: 700;
+    color: #fff;
+    &.pauseTime{
+        color: $btn-color;
+    }
+}
+.leftCardDeck{
+    left: 70px;
+}
+.rightCardDeck{
+    right: 70px;
+}
+
+//*********medsection********
+.medsection{
+    width: 100%;
+    height: 520px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 100px;
+    .deck{
+        margin-top: 10px;
+        width: 100px;
+        height: 150px;
+        position: relative;
+        &>.cardbox0{
+            top:0
+        }
+    }
+}
+.cardbox0{
+    @include card(40);
+}
+
+
+//**************popuppage**************
+.popupPage{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(39, 18, 62, .5);
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 2;
+    .content{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background-color: $bg-color;
+        width: 520px;
+        height: 420px;
+        border-radius: 12px;
+        padding: 39px 70px;
+        &.win{
+            padding: 30px 70px;
+        }
+        .overImg{
+            display: inline-block;
+            padding: 0 100px 0 0;
+        }
+        .winImg{
+            display: inline-block;
+        }
+        .text{
+            display: inline-block;
+            margin-top: 10px;
+            font-family: "Noto+Sans+TC","Noto_Sans_TC","NotoSansTC","Roboto";
+            font-size: 24px;
+            line-height: 48px;
+            color: $btn-color;
+            text-align: center;
+        }
+        .btn{
+            @include btn(28px,158px,60px);
+            border-radius: 6.5px;
+            font-weight: 500;
+            margin-top: 10px;
+            border: 1px solid transparent;
+            &:hover{
+                @include btnHover;
+                background-color: none;
+                border: 1px solid $btn-color;
+            }
+            &.btnLeft{
+                margin-right: 20px;
+            }
+            &.btnRight{
+                margin-left: 20px;
+            }
+        }
+        .btn-close{
+            display: inline-block;
+            margin-top: 20px;
+            // font-family: "Noto+Sans+TC","Noto_Sans_TC","NotoSansTC","Roboto";
+            font-size: 14px;
+            line-height: 24px;
+            color: $btn-color;
+            text-align: center;
+            font-weight: 300;
+            border-bottom: 1px solid $btn-color;
+            cursor: pointer;
+            &:hover{
+                color: darken($btn-color, 10);
+                border-color: darken($btn-color, 10);
+            }
+        }
+    }
+}
+.pausePage{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    height: 720px;
+    left: 0;
+    background-color: rgba(0, 0, 0, .1);
+    visibility: hidden;
+    opacity: 0;
+}
+.hint{
+    position: absolute;
+    bottom: 100px;
+    font-size: 20px;
+    right: 50px;
+    width: 300px;
+    height: 120px;
+    text-align: center;
+    line-height: 120px;
+    background-color: $btn-color;
+    border: 5px solid #fff;
+    color: $bg-color;
+    border-radius: 20px;
+    visibility: hidden;
+    opacity: 0;
+   transition: all .5s ;
+}
+.show{
+    visibility: visible;
+    opacity: 1;
+}
+.dragging{
+    opacity: .5;
+}
