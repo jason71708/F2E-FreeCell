@@ -247,16 +247,17 @@ html,body{
     .leftCardDeck,.rightCardDeck{
         display: flex;
         position: absolute;
-        bottom: 10px;
+        bottom: 8px;
         width: 460px;
         height: 160px;
         // border: 1px solid #fff;
         justify-content: space-between;
-        align-items: flex-end;
+        align-items: flex-start;
         .deck{
             width: 100px;
             height: 150px;
             position: relative;
+            transition: all .3s ;
         }
         .cardbox0{
             top: 0;
@@ -297,6 +298,7 @@ html,body{
         width: 100px;
         height: 150px;
         position: relative;
+        transition: all .3s ;
         &>.cardbox0{
             top:0
         }
@@ -304,6 +306,7 @@ html,body{
 }
 .cardbox0{
     @include card(40);
+    transition: all .1s;
 }
 
 
@@ -409,7 +412,7 @@ html,body{
     border-radius: 20px;
     visibility: hidden;
     opacity: 0;
-   transition: all .5s ;
+    transition: all .5s ;
 }
 .show{
     visibility: visible;
@@ -417,4 +420,28 @@ html,body{
 }
 .dragging{
     opacity: .5;
+}
+.hover:hover{
+     filter:drop-shadow (0px 0px 10px rgba(#fff, 0.5));
+	-webkit-filter: drop-shadow(0px 0px 10px rgba(#fff, 0.5));
+    -moz-filter: drop-shadow(0px 0px 10px rgba(#fff, 0.5));
+}
+.enterEffect{
+    filter:drop-shadow (0px 0px 10px rgba(#fff, 0.5));
+	-webkit-filter: drop-shadow(0px 0px 10px rgba(#fff, 0.5));
+    -moz-filter: drop-shadow(0px 0px 10px rgba(#fff, 0.5));
+}
+.deckEnterEffect{
+    height: 125px !important;
+    box-shadow:1px 1px 10px 5px rgba(#fff, 0.5) inset;
+}
+@keyframes wave{
+    0%{transform: translateY(0px);}
+    50%{transform: translateY(-5px);}
+    100%{transform: translateY(0px);}
+}
+@keyframes newEffect {
+    0%{left: -1000px; opacity: 0;}
+    10%{opacity: 1;}
+    100%{left: 0px;}
 }

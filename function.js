@@ -136,7 +136,7 @@
                 underCard.className='cardbox0';
                 underCard.deck = `under${index}`;
                 underCard.number = cards;
-
+                underCard.style.animation = `newEffect .5s ${3+cardIndex/2}s backwards`              
                 underCard.style.backgroundImage = `url(img/card/poker-${kindColor(cards)}${cardNum(cards)}.svg)`;
 
                 medDeck.appendChild(underCard); //卡片放進牌堆
@@ -246,6 +246,11 @@
                 }
             }
         }
+        let eff = document.querySelectorAll('[draggable="true"]');
+        eff.forEach((item) => {
+            item.classList.add('hover')
+        })
+        
     }
 
     function parentDraggable(child,dad){  //用於判斷上層可否拖動
@@ -268,6 +273,7 @@
                     let deckss = copyUnderDeck[i]
                     let Fcard = document.querySelector('#card'+deckss[r])
                     Fcard.draggable = false
+                    Fcard.classList.remove('hover')
                 }
             }
         }
@@ -301,7 +307,11 @@
                     }
                 }
             }
-        } 
+        }
+        let serchCards = document.querySelectorAll('[draggable="true"]');
+        serchCards.forEach((item) => {
+            item.classList.add('hover')
+        })
     }
     function childrenAttr(child){
         if(child.children){  //把其子孫都更改牌區屬性
@@ -329,8 +339,8 @@
     all.addEventListener('dragstart', dragSStart);
     all.addEventListener("dragend", dragEEnd);
     all.addEventListener('drop', dropped);
-    all.addEventListener('dragenter', cancelDDefault);
-    all.addEventListener('dragleave', cancelDDefault);
+    all.addEventListener('dragenter', dragEnter);
+    all.addEventListener('dragleave', dragLeave);
     all.addEventListener('dragover', cancelDDefault);  //沒設這個就不能順利drop
     //註冊底下功能按鈕事件
     let pauseBtn = document.querySelector('#pause')
@@ -363,6 +373,23 @@
     const beginBtn = document.querySelector('#start')
     beginBtn.addEventListener('click', beginGame)
 
+    function dragEnter(e){
+        cancelDDefault(e)
+        if(e.target.draggable == true){
+            e.target.classList.add('enterEffect')
+        }else if(e.target.deck == "left" || e.target.deck == "under"){
+            e.target.classList.add('deckEnterEffect')            
+        }
+    }
+    function dragLeave(e){
+        cancelDDefault(e)
+        if(e.target.draggable == true){
+            e.target.classList.remove('enterEffect')
+        }else if(e.target.deck == "left" || e.target.deck == "under"){
+            e.target.classList.remove('deckEnterEffect')            
+        }
+    }
+
     function cancelDDefault (e) {
 		  e.preventDefault()
 		  e.stopPropagation()
@@ -371,17 +398,22 @@
 
     function dragSStart (e) {
         e.target.classList.add('dragging');
+        e.target.style.animation = `none`
         e.dataTransfer.setData('text/plain', e.target.id);
         sourceContainerId = e.target.parentElement.id;
         sourceId = e.target.id;           
     }
     function dragEEnd(e){
-        e.target.classList.remove('dragging');                  
+        e.target.classList.remove('dragging');
+        e.target.style.animation = `wave .5s linear backwards`
+        // e.target.classList.add('endEffect')                  
     }
     
     function dropped(e){    
       if (e.target.id.indexOf('deck')>-1 || e.target.id.indexOf('card')>-1) {//判斷是不是指定的容器
             cancelDDefault(e);
+            e.target.classList.remove('enterEffect')
+            e.target.classList.remove('deckEnterEffect')            
             let id = e.dataTransfer.getData('text/plain');
             if (id==e.target.id) {return;}  //判斷是不是同一張牌
             if (sourceContainerId==e.target.id){return;}  //判斷是不是同一個容器
@@ -694,7 +726,8 @@
         freshRightView();
         beginSerch();
         loadPage.style.display = 'block'
-        setTimeout(function(){playAlredy();counting();}, 3000)
+        setTimeout(function(){counting();}, 6000)
+        setTimeout(function(){playAlredy();}, 3000)
     }
 
     function isFinish(){
@@ -715,9 +748,10 @@
     
     function beginGame(){
         beginPage.style.display = 'none'
-        all.style.display = 'block'
         loadPage.style.display = 'block'
-        setTimeout(function(){playAlredy();counting()}, 3000)
+        all.style.display = 'block'
+        setTimeout(function(){playAlredy();}, 3000)
+        setTimeout(function(){counting()}, 6000)
     }
 
     function playAlredy(){
